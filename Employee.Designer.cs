@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_add_attendance = new System.Windows.Forms.Button();
             this.groupBox_left_time = new System.Windows.Forms.GroupBox();
             this.radioButton_left_am = new System.Windows.Forms.RadioButton();
             this.radioButton_left_pm = new System.Windows.Forms.RadioButton();
             this.comboBox_employee_name = new System.Windows.Forms.ComboBox();
-            this.attendencesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.eMSDataSet = new EMS.EMSDataSet1();
-            this.employeesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.numericUpDown_left_time = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_entered_time = new System.Windows.Forms.NumericUpDown();
             this.label_left_time = new System.Windows.Forms.Label();
@@ -58,7 +55,6 @@
             this.btn_add_emp = new System.Windows.Forms.Button();
             this.comboBox_gender = new System.Windows.Forms.ComboBox();
             this.comboBox_department = new System.Windows.Forms.ComboBox();
-            this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker_join = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_birth = new System.Windows.Forms.DateTimePicker();
             this.numupdwn_salary = new System.Windows.Forms.NumericUpDown();
@@ -84,43 +80,37 @@
             this.joindateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.employeesBindingSource1 = new System.Windows.Forms.BindingSource();
             this.tab_departments = new System.Windows.Forms.TabPage();
             this.dataGridView_departments = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentsBindingSource1 = new System.Windows.Forms.BindingSource();
             this.tab_attendance = new System.Windows.Forms.TabPage();
             this.dataGridView_attendance = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeenteredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeleftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attendencesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.attendencesBindingSource = new System.Windows.Forms.BindingSource();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage_salaries = new System.Windows.Forms.TabPage();
             this.dataGridView_salaries = new System.Windows.Forms.DataGridView();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eMSDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eMSDataSetBindingSource = new System.Windows.Forms.BindingSource();
             this.attendencesTableAdapter = new EMS.EMSDataSet1TableAdapters.attendencesTableAdapter();
             this.departmentsTableAdapter = new EMS.EMSDataSet1TableAdapters.departmentsTableAdapter();
             this.employeesTableAdapter = new EMS.EMSDataSet1TableAdapters.employeesTableAdapter();
-            this.employeesBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.groupBox_left_time.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_left_time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_entered_time)).BeginInit();
             this.groupBox_entered_time.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numupdwn_salary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl_management.SuspendLayout();
@@ -136,11 +126,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage_salaries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_salaries)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eMSDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -242,9 +229,6 @@
             // 
             // comboBox_employee_name
             // 
-            this.comboBox_employee_name.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.attendencesBindingSource1, "emp_id", true));
-            this.comboBox_employee_name.DataSource = this.employeesBindingSource2;
-            this.comboBox_employee_name.DisplayMember = "name";
             this.comboBox_employee_name.FormattingEnabled = true;
             this.comboBox_employee_name.Location = new System.Drawing.Point(12, 114);
             this.comboBox_employee_name.Name = "comboBox_employee_name";
@@ -253,20 +237,10 @@
             this.comboBox_employee_name.ValueMember = "id";
             this.comboBox_employee_name.Visible = false;
             // 
-            // attendencesBindingSource1
-            // 
-            this.attendencesBindingSource1.DataMember = "attendences";
-            this.attendencesBindingSource1.DataSource = this.eMSDataSet;
-            // 
             // eMSDataSet
             // 
             this.eMSDataSet.DataSetName = "EMSDataSet";
             this.eMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeesBindingSource2
-            // 
-            this.employeesBindingSource2.DataMember = "employees";
-            this.employeesBindingSource2.DataSource = this.eMSDataSet;
             // 
             // numericUpDown_left_time
             // 
@@ -530,20 +504,12 @@
             // 
             // comboBox_department
             // 
-            this.comboBox_department.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.departmentsBindingSource, "id", true));
-            this.comboBox_department.DataSource = this.departmentsBindingSource;
-            this.comboBox_department.DisplayMember = "department";
             this.comboBox_department.FormattingEnabled = true;
             this.comboBox_department.Location = new System.Drawing.Point(13, 231);
             this.comboBox_department.Name = "comboBox_department";
             this.comboBox_department.Size = new System.Drawing.Size(221, 21);
             this.comboBox_department.TabIndex = 2;
             this.comboBox_department.ValueMember = "id";
-            // 
-            // departmentsBindingSource
-            // 
-            this.departmentsBindingSource.DataMember = "departments";
-            this.departmentsBindingSource.DataSource = this.eMSDataSet;
             // 
             // dateTimePicker_join
             // 
@@ -959,11 +925,6 @@
             this.dataGridView_salaries.Size = new System.Drawing.Size(786, 413);
             this.dataGridView_salaries.TabIndex = 0;
             // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "employees";
-            this.employeesBindingSource.DataSource = this.eMSDataSet;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1023,16 +984,6 @@
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
             // 
-            // employeesBindingSource3
-            // 
-            this.employeesBindingSource3.DataMember = "employees";
-            this.employeesBindingSource3.DataSource = this.eMSDataSet;
-            // 
-            // employeesBindingSource4
-            // 
-            this.employeesBindingSource4.DataMember = "employees";
-            this.employeesBindingSource4.DataSource = this.eMSDataSet;
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1052,14 +1003,11 @@
             this.panel1.PerformLayout();
             this.groupBox_left_time.ResumeLayout(false);
             this.groupBox_left_time.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_left_time)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_entered_time)).EndInit();
             this.groupBox_entered_time.ResumeLayout(false);
             this.groupBox_entered_time.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numupdwn_salary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl_management.ResumeLayout(false);
@@ -1075,12 +1023,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage_salaries.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_salaries)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eMSDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1112,7 +1057,6 @@
         private System.Windows.Forms.TabPage tab_attendance;
         private System.Windows.Forms.DataGridView dataGridView_employees;
         private EMSDataSet1 eMSDataSet;
-        private System.Windows.Forms.BindingSource employeesBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
@@ -1129,7 +1073,6 @@
         private System.Windows.Forms.ComboBox comboBox_gender;
         private System.Windows.Forms.Label label_gender;
         private System.Windows.Forms.DataGridView dataGridView_departments;
-        private System.Windows.Forms.BindingSource departmentsBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -1154,8 +1097,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_entered_time;
         private System.Windows.Forms.Label label_entered_time;
         private System.Windows.Forms.ComboBox comboBox_employee_name;
-        private System.Windows.Forms.BindingSource attendencesBindingSource1;
-        private System.Windows.Forms.BindingSource employeesBindingSource2;
         private System.Windows.Forms.RadioButton radioButton_entered_pm;
         private System.Windows.Forms.RadioButton radioButton_entered_am;
         private System.Windows.Forms.RadioButton radioButton_left_pm;
@@ -1164,8 +1105,6 @@
         private System.Windows.Forms.GroupBox groupBox_left_time;
         private System.Windows.Forms.Button btn_add_attendance;
         private System.Windows.Forms.TabPage tabPage_salaries;
-        private System.Windows.Forms.BindingSource employeesBindingSource4;
-        private System.Windows.Forms.BindingSource employeesBindingSource3;
         private System.Windows.Forms.DataGridView dataGridView_salaries;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeenteredDataGridViewTextBoxColumn;
