@@ -187,13 +187,10 @@
     <Compile Include="Employee.Designer.cs">
       <DependentUpon>Employee.cs</DependentUpon>
     </Compile>
-    <Compile Include="EMSDataSet1.cs">
-      <DependentUpon>EMSDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="EMSDataSet1.Designer.cs">
+    <Compile Include="EMSDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EMSDataSet1.xsd</DependentUpon>
+      <DependentUpon>EMSDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -219,16 +216,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="EMSDataSet1.xsc">
-      <DependentUpon>EMSDataSet1.xsd</DependentUpon>
+    <None Include="EMSDataSet.xsc">
+      <DependentUpon>EMSDataSet.xsd</DependentUpon>
     </None>
-    <None Include="EMSDataSet1.xsd">
+    <None Include="EMSDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EMSDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>EMSDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="EMSDataSet1.xss">
-      <DependentUpon>EMSDataSet1.xsd</DependentUpon>
+    <None Include="EMSDataSet.xss">
+      <DependentUpon>EMSDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

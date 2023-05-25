@@ -24,6 +24,12 @@ namespace EMS
         //load employees form
         private void Employee_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'eMSDataSet.attendences' table. You can move, or remove it, as needed.
+            this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
+            // TODO: This line of code loads data into the 'eMSDataSet.departments' table. You can move, or remove it, as needed.
+            this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
+            // TODO: This line of code loads data into the 'eMSDataSet.employees' table. You can move, or remove it, as needed.
+            this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
             // TODO: This line of code loads data into the 'eMSDataSet.employees' table. You can move, or remove it, as needed.
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
 
@@ -51,7 +57,8 @@ namespace EMS
             dataGridView_attendance.Columns[0].HeaderText = "ID";
             dataGridView_attendance.Columns[1].HeaderText = "Time Entered";
             dataGridView_attendance.Columns[2].HeaderText = "Time Left";
-            dataGridView_attendance.Columns[3].HeaderText = "Employee ID";
+            dataGridView_attendance.Columns[3].HeaderText = "Employee Name";
+            dataGridView_attendance.Columns[4].HeaderText = "Date";
 
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT name FROM [employees]", con);
@@ -423,6 +430,7 @@ namespace EMS
 
                 txt_emp_name.Visible = false;
                 txt_phone.Visible = false;
+                comboBox_employee_name.Visible = false;
                 comboBox_gender.Visible = false;
                 comboBox_department.Visible = false;
                 numupdwn_salary.Visible = false;
@@ -461,6 +469,50 @@ namespace EMS
                 groupBox_entered_time.Visible = true;
                 groupBox_left_time.Visible = true;
                 btn_add_attendance.Visible = true;
+
+                label_department.Visible = false;
+                txt_department.Visible = false;
+
+                label_emp_department.Visible = false;
+                label_gender.Visible = false;
+                label_birth.Visible = false;
+                label_join.Visible = false;
+                label_salary.Visible = false;
+                label_phone.Visible = false;
+
+                txt_emp_name.Visible = false;
+                txt_phone.Visible = false;
+                comboBox_gender.Visible = false;
+                comboBox_department.Visible = false;
+                numupdwn_salary.Visible = false;
+                dateTimePicker_birth.Visible = false;
+                dateTimePicker_join.Visible = false;
+
+                btn_add_emp.Visible = false;
+                btn_delete_emp.Visible = false;
+                btn_update_emp.Visible = false;
+
+                btn_add_department.Visible = false;
+                btn_delete_dapartment.Visible = false;
+                btn_update_department.Visible = false;
+            }
+
+            //if the user chooses attendence tab
+            else if (tabControl_management.SelectedTab == tabPage_salaries)
+            {
+                label_title.Text = "View Salaries";
+                label_name.Visible = false;
+                label_current_date.Visible = false;
+                label_entered_time.Visible = false;
+                label_left_time.Visible = false;
+
+                comboBox_employee_name.Visible = false;
+                dateTimePicker_current_date.Visible = false;
+                numericUpDown_entered_time.Visible = false;
+                numericUpDown_left_time.Visible = false;
+                groupBox_entered_time.Visible = false;
+                groupBox_left_time.Visible = false;
+                btn_add_attendance.Visible = false;
 
                 label_department.Visible = false;
                 txt_department.Visible = false;
@@ -544,12 +596,12 @@ namespace EMS
             }
         }
 
+        //refresh the data of the data grids
         private void RefreshData() 
         {
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
             this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
             this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
         }
-
     }
 }
