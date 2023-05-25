@@ -92,6 +92,10 @@
             this.departmentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tab_attendance = new System.Windows.Forms.TabPage();
             this.dataGridView_attendance = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeenteredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeleftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendencesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage_salaries = new System.Windows.Forms.TabPage();
@@ -108,10 +112,6 @@
             this.employeesTableAdapter = new EMS.EMSDataSet1TableAdapters.employeesTableAdapter();
             this.employeesBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.employeesBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeleftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeenteredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox_left_time.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource1)).BeginInit();
@@ -374,8 +374,6 @@
             // dateTimePicker_current_date
             // 
             this.dateTimePicker_current_date.Location = new System.Drawing.Point(12, 177);
-            this.dateTimePicker_current_date.MaxDate = new System.DateTime(2023, 5, 23, 0, 0, 0, 0);
-            this.dateTimePicker_current_date.MinDate = new System.DateTime(2023, 5, 23, 0, 0, 0, 0);
             this.dateTimePicker_current_date.Name = "dateTimePicker_current_date";
             this.dateTimePicker_current_date.Size = new System.Drawing.Size(221, 20);
             this.dateTimePicker_current_date.TabIndex = 16;
@@ -891,6 +889,34 @@
             this.dataGridView_attendance.Size = new System.Drawing.Size(786, 413);
             this.dataGridView_attendance.TabIndex = 1;
             // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // timeenteredDataGridViewTextBoxColumn
+            // 
+            this.timeenteredDataGridViewTextBoxColumn.DataPropertyName = "time_entered";
+            this.timeenteredDataGridViewTextBoxColumn.HeaderText = "time_entered";
+            this.timeenteredDataGridViewTextBoxColumn.Name = "timeenteredDataGridViewTextBoxColumn";
+            this.timeenteredDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeleftDataGridViewTextBoxColumn
+            // 
+            this.timeleftDataGridViewTextBoxColumn.DataPropertyName = "time_left";
+            this.timeleftDataGridViewTextBoxColumn.HeaderText = "time_left";
+            this.timeleftDataGridViewTextBoxColumn.Name = "timeleftDataGridViewTextBoxColumn";
+            this.timeleftDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // empidDataGridViewTextBoxColumn
+            // 
+            this.empidDataGridViewTextBoxColumn.DataPropertyName = "emp_id";
+            this.empidDataGridViewTextBoxColumn.HeaderText = "emp_id";
+            this.empidDataGridViewTextBoxColumn.Name = "empidDataGridViewTextBoxColumn";
+            this.empidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // attendencesBindingSource
             // 
             this.attendencesBindingSource.DataMember = "attendences";
@@ -1006,34 +1032,6 @@
             // 
             this.employeesBindingSource4.DataMember = "employees";
             this.employeesBindingSource4.DataSource = this.eMSDataSet;
-            // 
-            // idDataGridViewTextBoxColumn2
-            // 
-            this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn2.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
-            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // empidDataGridViewTextBoxColumn
-            // 
-            this.empidDataGridViewTextBoxColumn.DataPropertyName = "emp_id";
-            this.empidDataGridViewTextBoxColumn.HeaderText = "emp_id";
-            this.empidDataGridViewTextBoxColumn.Name = "empidDataGridViewTextBoxColumn";
-            this.empidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeleftDataGridViewTextBoxColumn
-            // 
-            this.timeleftDataGridViewTextBoxColumn.DataPropertyName = "time_left";
-            this.timeleftDataGridViewTextBoxColumn.HeaderText = "time_left";
-            this.timeleftDataGridViewTextBoxColumn.Name = "timeleftDataGridViewTextBoxColumn";
-            this.timeleftDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeenteredDataGridViewTextBoxColumn
-            // 
-            this.timeenteredDataGridViewTextBoxColumn.DataPropertyName = "time_entered";
-            this.timeenteredDataGridViewTextBoxColumn.HeaderText = "time_entered";
-            this.timeenteredDataGridViewTextBoxColumn.Name = "timeenteredDataGridViewTextBoxColumn";
-            this.timeenteredDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Employee
             // 

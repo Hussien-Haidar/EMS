@@ -938,6 +938,8 @@ namespace EMS {
             
             private global::System.Data.DataColumn columnphone;
             
+            private global::System.Data.DataColumn columnid1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public employeesDataTable() {
@@ -1037,6 +1039,14 @@ namespace EMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id1Column {
+                get {
+                    return this.columnid1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1082,7 +1092,8 @@ namespace EMS {
                         birth,
                         join_date,
                         salary,
-                        phone};
+                        phone,
+                        null};
                 rowemployeesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowemployeesRow);
                 return rowemployeesRow;
@@ -1120,6 +1131,7 @@ namespace EMS {
                 this.columnjoin_date = base.Columns["join_date"];
                 this.columnsalary = base.Columns["salary"];
                 this.columnphone = base.Columns["phone"];
+                this.columnid1 = base.Columns["id1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1141,6 +1153,8 @@ namespace EMS {
                 base.Columns.Add(this.columnsalary);
                 this.columnphone = new global::System.Data.DataColumn("phone", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnphone);
+                this.columnid1 = new global::System.Data.DataColumn("id1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1155,6 +1169,11 @@ namespace EMS {
                 this.columnbirth.MaxLength = 32;
                 this.columnjoin_date.MaxLength = 32;
                 this.columnsalary.MaxLength = 10;
+                this.columnid1.AutoIncrement = true;
+                this.columnid1.AutoIncrementSeed = -1;
+                this.columnid1.AutoIncrementStep = -1;
+                this.columnid1.AllowDBNull = false;
+                this.columnid1.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1590,6 +1609,17 @@ namespace EMS {
                 }
                 set {
                     this[this.tableemployees.phoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id1 {
+                get {
+                    return ((int)(this[this.tableemployees.id1Column]));
+                }
+                set {
+                    this[this.tableemployees.id1Column] = value;
                 }
             }
             
@@ -2423,13 +2453,14 @@ namespace EMS.EMSDataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("join_date", "join_date");
             tableMapping.ColumnMappings.Add("salary", "salary");
             tableMapping.ColumnMappings.Add("phone", "phone");
+            tableMapping.ColumnMappings.Add("id1", "id1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[employees] WHERE (([id] = @Original_id) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_gender = 1 AND [gender] IS NULL) OR ([gender] = @Original_gender)) AND ((@IsNull_department = 1 AND [department] IS NULL) OR ([department] = @Original_department)) AND ((@IsNull_birth = 1 AND [birth] IS NULL) OR ([birth] = @Original_birth)) AND ((@IsNull_join_date = 1 AND [join_date] IS NULL) OR ([join_date] = @Original_join_date)) AND ((@IsNull_salary = 1 AND [salary] IS NULL) OR ([salary] = @Original_salary)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [employees] WHERE (([id] = @p2) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_gender = 1 AND [gender] IS NULL) OR ([gender] = @Original_gender)) AND ((@IsNull_department = 1 AND [department] IS NULL) OR ([department] = @Original_department)) AND ((@IsNull_birth = 1 AND [birth] IS NULL) OR ([birth] = @Original_birth)) AND ((@IsNull_join_date = 1 AND [join_date] IS NULL) OR ([join_date] = @Original_join_date)) AND ((@IsNull_salary = 1 AND [salary] IS NULL) OR ([salary] = @Original_salary)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([id] = @Original_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Microsoft.Data.SqlClient.SqlParameter param = new global::Microsoft.Data.SqlClient.SqlParameter();
-            param.ParameterName = "@Original_id";
+            param.ParameterName = "@p2";
             param.DbType = global::System.Data.DbType.Int32;
             param.SqlDbType = global::System.Data.SqlDbType.Int;
             param.IsNullable = true;
@@ -2555,10 +2586,18 @@ namespace EMS.EMSDataSet1TableAdapters {
             param.SourceColumn = "phone";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@Original_id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SqlDbType = global::System.Data.SqlDbType.Int;
+            param.IsNullable = true;
+            param.SourceColumn = "id1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[employees] ([name], [gender], [department], [birth], [join_date], [salary], [phone]) VALUES (@name, @gender, @department, @birth, @join_date, @salary, @phone);
-SELECT id, name, gender, department, birth, join_date, salary, phone FROM employees WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [employees] ([name], [gender], [department], [birth], [join_date], [salary], [phone]) VALUES (@name, @gender, @department, @birth, @join_date, @salary, @phone);
+SELECT id, name, gender, department, birth, join_date, salary, phone, id AS Expr1 FROM employees WHERE (id = SCOPE_IDENTITY()) AND (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@name";
@@ -2611,8 +2650,8 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[employees] SET [name] = @name, [gender] = @gender, [department] = @department, [birth] = @birth, [join_date] = @join_date, [salary] = @salary, [phone] = @phone WHERE (([id] = @Original_id) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_gender = 1 AND [gender] IS NULL) OR ([gender] = @Original_gender)) AND ((@IsNull_department = 1 AND [department] IS NULL) OR ([department] = @Original_department)) AND ((@IsNull_birth = 1 AND [birth] IS NULL) OR ([birth] = @Original_birth)) AND ((@IsNull_join_date = 1 AND [join_date] IS NULL) OR ([join_date] = @Original_join_date)) AND ((@IsNull_salary = 1 AND [salary] IS NULL) OR ([salary] = @Original_salary)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)));
-SELECT id, name, gender, department, birth, join_date, salary, phone FROM employees WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [employees] SET [name] = @name, [gender] = @gender, [department] = @department, [birth] = @birth, [join_date] = @join_date, [salary] = @salary, [phone] = @phone WHERE (([id] = @p2) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_gender = 1 AND [gender] IS NULL) OR ([gender] = @Original_gender)) AND ((@IsNull_department = 1 AND [department] IS NULL) OR ([department] = @Original_department)) AND ((@IsNull_birth = 1 AND [birth] IS NULL) OR ([birth] = @Original_birth)) AND ((@IsNull_join_date = 1 AND [join_date] IS NULL) OR ([join_date] = @Original_join_date)) AND ((@IsNull_salary = 1 AND [salary] IS NULL) OR ([salary] = @Original_salary)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([id] = @Original_id));
+SELECT id, name, gender, department, birth, join_date, salary, phone, id AS Expr1 FROM employees WHERE (id = @id) AND (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@name";
@@ -2664,7 +2703,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
             param.SourceColumn = "phone";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
-            param.ParameterName = "@Original_id";
+            param.ParameterName = "@p2";
             param.DbType = global::System.Data.DbType.Int32;
             param.SqlDbType = global::System.Data.SqlDbType.Int;
             param.IsNullable = true;
@@ -2791,6 +2830,14 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@Original_id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SqlDbType = global::System.Data.SqlDbType.Int;
+            param.IsNullable = true;
+            param.SourceColumn = "id1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@id";
             param.DbType = global::System.Data.DbType.Int32;
             param.SqlDbType = global::System.Data.SqlDbType.Int;
@@ -2813,7 +2860,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
             this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, name, gender, department, birth, join_date, salary, phone FROM dbo.emp" +
+            this._commandCollection[0].CommandText = "SELECT id, name, gender, department, birth, join_date, salary, phone, id FROM emp" +
                 "loyees";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -2875,8 +2922,8 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_name, string Original_gender, string Original_department, string Original_birth, string Original_join_date, string Original_salary, global::System.Nullable<int> Original_phone) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
+        public virtual int Delete(int p2, string Original_name, string Original_gender, string Original_department, string Original_birth, string Original_join_date, string Original_salary, global::System.Nullable<int> Original_phone, int Original_id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p2));
             if ((Original_name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -2933,6 +2980,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3024,7 +3072,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
                     string join_date, 
                     string salary, 
                     global::System.Nullable<int> phone, 
-                    int Original_id, 
+                    int p2, 
                     string Original_name, 
                     string Original_gender, 
                     string Original_department, 
@@ -3032,6 +3080,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
                     string Original_join_date, 
                     string Original_salary, 
                     global::System.Nullable<int> Original_phone, 
+                    int Original_id, 
                     int id) {
             if ((name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3075,7 +3124,7 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p2));
             if ((Original_name == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
@@ -3132,7 +3181,8 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3153,8 +3203,24 @@ SELECT id, name, gender, department, birth, join_date, salary, phone FROM employ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string name, string gender, string department, string birth, string join_date, string salary, global::System.Nullable<int> phone, int Original_id, string Original_name, string Original_gender, string Original_department, string Original_birth, string Original_join_date, string Original_salary, global::System.Nullable<int> Original_phone) {
-            return this.Update(name, gender, department, birth, join_date, salary, phone, Original_id, Original_name, Original_gender, Original_department, Original_birth, Original_join_date, Original_salary, Original_phone, Original_id);
+        public virtual int Update(
+                    string name, 
+                    string gender, 
+                    string department, 
+                    string birth, 
+                    string join_date, 
+                    string salary, 
+                    global::System.Nullable<int> phone, 
+                    int p2, 
+                    string Original_name, 
+                    string Original_gender, 
+                    string Original_department, 
+                    string Original_birth, 
+                    string Original_join_date, 
+                    string Original_salary, 
+                    global::System.Nullable<int> Original_phone, 
+                    int Original_id) {
+            return this.Update(name, gender, department, birth, join_date, salary, phone, p2, Original_name, Original_gender, Original_department, Original_birth, Original_join_date, Original_salary, Original_phone, Original_id, p2);
         }
     }
     

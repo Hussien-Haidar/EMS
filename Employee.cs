@@ -26,10 +26,32 @@ namespace EMS
         {
             // TODO: This line of code loads data into the 'eMSDataSet.employees' table. You can move, or remove it, as needed.
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
+
+            // Set the column header text for each column
+            dataGridView_employees.Columns[0].HeaderText = "ID";
+            dataGridView_employees.Columns[1].HeaderText = "Name";
+            dataGridView_employees.Columns[2].HeaderText = "Gender";
+            dataGridView_employees.Columns[3].HeaderText = "Department";
+            dataGridView_employees.Columns[4].HeaderText = "Birth Date";
+            dataGridView_employees.Columns[5].HeaderText = "Join Date";
+            dataGridView_employees.Columns[6].HeaderText = "Salary";
+            dataGridView_employees.Columns[7].HeaderText = "Phone";
+
             // TODO: This line of code loads data into the 'eMSDataSet.departments' table. You can move, or remove it, as needed.
             this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
+
+            // Set the column header text for each column
+            dataGridView_departments.Columns[0].HeaderText = "ID";
+            dataGridView_departments.Columns[1].HeaderText = "Department";
+
             // TODO: This line of code loads data into the 'eMSDataSet.attendences' table. You can move, or remove it, as needed.
             this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
+
+            // Set the column header text for each column
+            dataGridView_attendance.Columns[0].HeaderText = "ID";
+            dataGridView_attendance.Columns[1].HeaderText = "Time Entered";
+            dataGridView_attendance.Columns[2].HeaderText = "Time Left";
+            dataGridView_attendance.Columns[3].HeaderText = "Employee ID";
 
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT name FROM [employees]", con);
@@ -300,8 +322,8 @@ namespace EMS
                         "VALUES (@timeEntered, @timeLeft, @empId, @date)", con);
 
                     // Set parameter values
-                    cmd.Parameters.AddWithValue("@timeEntered", numericUpDown_entered_time.Value + enteredTimeSelection);
-                    cmd.Parameters.AddWithValue("@timeLeft", numericUpDown_left_time.Value + leftTimeSelection);
+                    cmd.Parameters.AddWithValue("@timeEntered", numericUpDown_entered_time.Value + " " + enteredTimeSelection);
+                    cmd.Parameters.AddWithValue("@timeLeft", numericUpDown_left_time.Value + " " + leftTimeSelection);
                     cmd.Parameters.AddWithValue("@empId", "5"); // Assuming you have a specific employee ID
                     cmd.Parameters.AddWithValue("@date", dateTimePicker_current_date.Text);
 
