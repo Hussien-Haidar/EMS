@@ -61,7 +61,7 @@ namespace EMS
             dataGridView_attendance.Columns[4].HeaderText = "Date";
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT name FROM [employees]", con);
+            SqlCommand cmd = new SqlCommand("SELECT id, name FROM [employees]", con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -69,33 +69,33 @@ namespace EMS
             // Assign the DataTable as the data source for the DataGridView
             dataGridView_salaries.DataSource = dataTable;
 
-            // Set the column name for the "Employees" column
+            dataGridView_salaries.Columns["id"].HeaderText = "ID";
             dataGridView_salaries.Columns["name"].HeaderText = "Employees";
             con.Close();
 
-            con.Open();
-            // Query the database to retrieve the join_date column for the desired employee(s)
-            string query = "SELECT join_date, birth FROM [employees]";
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader reader = command.ExecuteReader();
+            //con.Open();
+            //// Query the database to retrieve the join_date column for the desired employee(s)
+            //string query = "SELECT join_date, birth FROM [employees]";
+            //SqlCommand command = new SqlCommand(query, con);
+            //SqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
-            {
-                string joinDateText = reader["join_date"].ToString();
-                string birthDateText = reader["birth"].ToString();
+            //while (reader.Read())
+            //{
+            //    string joinDateText = reader["join_date"].ToString();
+            //    string birthDateText = reader["birth"].ToString();
 
-                // Parse the join_date text to extract the month name
-                DateTime joinDate = DateTime.Parse(joinDateText);
-                DateTime birthDate = DateTime.Parse(birthDateText);
+            //    // Parse the join_date text to extract the month name
+            //    DateTime joinDate = DateTime.Parse(joinDateText);
+            //    DateTime birthDate = DateTime.Parse(birthDateText);
 
-                string joinMonthName = joinDate.ToString("MMMM");
-                string birthMonthName = birthDate.ToString("MMM");
+            //    string joinMonthName = joinDate.ToString("MMMM");
+            //    string birthMonthName = birthDate.ToString("MMM");
 
-                // Use the monthName variable as desired (e.g., store it, display it, etc.)
-                Console.WriteLine("Month Name: " + joinMonthName + ", "+ birthMonthName);
-            }
+            //    // Use the monthName variable as desired (e.g., store it, display it, etc.)
+            //    Console.WriteLine("Month Name: " + joinMonthName + ", "+ birthMonthName);
+            //}
 
-            reader.Close();
+            //reader.Close();
 
 
         }
@@ -135,8 +135,6 @@ namespace EMS
                 {
                     MessageBox.Show("Employee has been added successfully");
                     txt_emp_name.Text = txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
-                    dateTimePicker_birth.Value = dateTimePicker_birth.MinDate;
-                    dateTimePicker_join.Value = dateTimePicker_join.MinDate;
                     RefreshData();
                 }
                 else 
@@ -164,15 +162,19 @@ namespace EMS
                 if (i != 0)
                 {
                     MessageBox.Show("Employee has been permenantly deleted");
-                    txt_emp_name.Text = txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
-                    dateTimePicker_birth.Value = dateTimePicker_birth.MinDate;
-                    dateTimePicker_join.Value = dateTimePicker_join.MinDate;
+                    txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
                     RefreshData();
                 }
                 else
                 {
                     MessageBox.Show("error");
                 }
+
+                con.Close();
+                con.Open();
+                SqlCommand cmd2 = new SqlCommand("Delete [attendences] where emp_name = '" + txt_emp_name.Text + "'", con);
+                int i2 = cmd.ExecuteNonQuery();
+                txt_emp_name.Text = "";
             }
             else
             {
@@ -197,8 +199,6 @@ namespace EMS
                 {
                     MessageBox.Show("Employee has been successfully updated");
                     txt_emp_name.Text = txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
-                    dateTimePicker_birth.Value = dateTimePicker_birth.MinDate;
-                    dateTimePicker_join.Value = dateTimePicker_join.MinDate;
                     RefreshData();
                 }
                 else
@@ -325,13 +325,13 @@ namespace EMS
                 {
                     con.Close();
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO [attendences] (time_entered, time_left, emp_id, date) " +
-                        "VALUES (@timeEntered, @timeLeft, @empId, @date)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [attendences] (time_entered, time_left, emp_name, date) " +
+                        "VALUES (@timeEntered, @timeLeft, @empName, @date)", con);
 
                     // Set parameter values
                     cmd.Parameters.AddWithValue("@timeEntered", numericUpDown_entered_time.Value + " " + enteredTimeSelection);
                     cmd.Parameters.AddWithValue("@timeLeft", numericUpDown_left_time.Value + " " + leftTimeSelection);
-                    cmd.Parameters.AddWithValue("@empId", "5"); // Assuming you have a specific employee ID
+                    cmd.Parameters.AddWithValue("@empName", comboBox_employee_name.Text); // Assuming you have a specific employee ID
                     cmd.Parameters.AddWithValue("@date", dateTimePicker_current_date.Text);
 
                     int i = cmd.ExecuteNonQuery();
@@ -371,6 +371,7 @@ namespace EMS
                 txt_department.Visible = false;
                 label_department.Visible = false;
 
+                label_total_salary.Visible = false;
                 label_current_date.Visible = false;
                 label_entered_time.Visible = false;
                 label_left_time.Visible = false;
@@ -383,7 +384,11 @@ namespace EMS
                 label_salary.Visible = true;
                 label_phone.Visible = true;
 
+                txt_total_salary.Visible = false;
                 txt_emp_name.Visible = true;
+                txt_emp_name.ReadOnly = false;
+                txt_emp_name.BackColor = Color.Snow;
+                txt_emp_name.Text = "";
                 txt_phone.Visible = true;
                 comboBox_gender.Visible = true;
                 comboBox_department.Visible = true;
@@ -417,6 +422,7 @@ namespace EMS
                 txt_department.Visible = true;
                 label_department.Visible = true;
 
+                label_total_salary.Visible = false;
                 label_name.Visible = false;
                 label_emp_department.Visible = false;
                 label_gender.Visible = false;
@@ -428,6 +434,7 @@ namespace EMS
                 label_entered_time.Visible = false;
                 label_left_time.Visible = false;
 
+                txt_total_salary.Visible = false;
                 txt_emp_name.Visible = false;
                 txt_phone.Visible = false;
                 comboBox_employee_name.Visible = false;
@@ -473,6 +480,7 @@ namespace EMS
                 label_department.Visible = false;
                 txt_department.Visible = false;
 
+                label_total_salary.Visible = false;
                 label_emp_department.Visible = false;
                 label_gender.Visible = false;
                 label_birth.Visible = false;
@@ -480,6 +488,7 @@ namespace EMS
                 label_salary.Visible = false;
                 label_phone.Visible = false;
 
+                txt_total_salary.Visible = false;
                 txt_emp_name.Visible = false;
                 txt_phone.Visible = false;
                 comboBox_gender.Visible = false;
@@ -501,7 +510,14 @@ namespace EMS
             else if (tabControl_management.SelectedTab == tabPage_salaries)
             {
                 label_title.Text = "View Salaries";
-                label_name.Visible = false;
+                label_name.Visible = true;
+                label_total_salary.Visible = true;
+                txt_total_salary.Visible = true;
+                txt_emp_name.Visible = true;
+                txt_emp_name.ReadOnly = true;
+                txt_emp_name.BackColor = Color.LightGray;
+                txt_emp_name.Text = "";
+
                 label_current_date.Visible = false;
                 label_entered_time.Visible = false;
                 label_left_time.Visible = false;
@@ -524,7 +540,6 @@ namespace EMS
                 label_salary.Visible = false;
                 label_phone.Visible = false;
 
-                txt_emp_name.Visible = false;
                 txt_phone.Visible = false;
                 comboBox_gender.Visible = false;
                 comboBox_department.Visible = false;
@@ -587,6 +602,58 @@ namespace EMS
 
                     txt_id.Text = id;
                     txt_department.Text = department;
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that may occur
+                    MessageBox.Show("Error retrieving cell values: " + ex.Message);
+                }
+            }
+        }
+
+        //get the data of the selected row from the data grid view of the salaries
+        private void dataGridView_salaries_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_salaries.Rows[e.RowIndex];
+
+                try
+                {
+                    string id = selectedRow.Cells[0].Value.ToString();
+                    string name = selectedRow.Cells[1].Value.ToString();
+                    int count = 0;
+                    int dailySalary = 0;
+
+                    txt_id.Text = id;
+                    txt_emp_name.Text = name;
+
+                    con.Close();
+                    con.Open();
+
+                    string query = "SELECT salary FROM [employees] where id = '" + txt_id.Text + "'";
+                    string query2 = "SELECT id FROM [attendences] where emp_name = '" + txt_emp_name.Text + "'";
+
+                    SqlCommand command = new SqlCommand(query, con);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        dailySalary = int.Parse(reader["salary"].ToString());
+                    }
+
+                    reader.Close(); // Close the first DataReader
+
+                    SqlCommand command2 = new SqlCommand(query2, con);
+                    SqlDataReader reader2 = command2.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        count++;
+                    }
+
+                    reader2.Close(); // Close the second DataReader
+                    txt_total_salary.Text = (count * dailySalary) + " $";
                 }
                 catch (Exception ex)
                 {

@@ -35,6 +35,8 @@
             this.radioButton_left_am = new System.Windows.Forms.RadioButton();
             this.radioButton_left_pm = new System.Windows.Forms.RadioButton();
             this.comboBox_employee_name = new System.Windows.Forms.ComboBox();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eMSDataSet = new EMS.EMSDataSet();
             this.numericUpDown_left_time = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_entered_time = new System.Windows.Forms.NumericUpDown();
             this.label_left_time = new System.Windows.Forms.Label();
@@ -55,6 +57,7 @@
             this.btn_add_emp = new System.Windows.Forms.Button();
             this.comboBox_gender = new System.Windows.Forms.ComboBox();
             this.comboBox_department = new System.Windows.Forms.ComboBox();
+            this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker_join = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_birth = new System.Windows.Forms.DateTimePicker();
             this.numupdwn_salary = new System.Windows.Forms.NumericUpDown();
@@ -72,21 +75,6 @@
             this.tabControl_management = new System.Windows.Forms.TabControl();
             this.tab_employees = new System.Windows.Forms.TabPage();
             this.dataGridView_employees = new System.Windows.Forms.DataGridView();
-            this.tab_departments = new System.Windows.Forms.TabPage();
-            this.dataGridView_departments = new System.Windows.Forms.DataGridView();
-            this.tab_attendance = new System.Windows.Forms.TabPage();
-            this.dataGridView_attendance = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage_salaries = new System.Windows.Forms.TabPage();
-            this.dataGridView_salaries = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eMSDataSet = new EMS.EMSDataSet();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesTableAdapter = new EMS.EMSDataSetTableAdapters.employeesTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,22 +83,39 @@
             this.joindateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab_departments = new System.Windows.Forms.TabPage();
+            this.dataGridView_departments = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.departmentsTableAdapter = new EMS.EMSDataSetTableAdapters.departmentsTableAdapter();
-            this.attendencesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.attendencesTableAdapter = new EMS.EMSDataSetTableAdapters.attendencesTableAdapter();
+            this.tab_attendance = new System.Windows.Forms.TabPage();
+            this.dataGridView_attendance = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeenteredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeleftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attendencesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage_salaries = new System.Windows.Forms.TabPage();
+            this.dataGridView_salaries = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeesTableAdapter = new EMS.EMSDataSetTableAdapters.employeesTableAdapter();
+            this.departmentsTableAdapter = new EMS.EMSDataSetTableAdapters.departmentsTableAdapter();
+            this.attendencesTableAdapter = new EMS.EMSDataSetTableAdapters.attendencesTableAdapter();
+            this.label_footer = new System.Windows.Forms.Label();
+            this.txt_total_salary = new System.Windows.Forms.TextBox();
+            this.label_total_salary = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox_left_time.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_left_time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_entered_time)).BeginInit();
             this.groupBox_entered_time.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numupdwn_salary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl_management.SuspendLayout();
@@ -120,19 +125,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_departments)).BeginInit();
             this.tab_attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_attendance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource)).BeginInit();
             this.tabPage_salaries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_salaries)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.label_total_salary);
+            this.panel1.Controls.Add(this.txt_total_salary);
             this.panel1.Controls.Add(this.btn_add_attendance);
             this.panel1.Controls.Add(this.groupBox_left_time);
             this.panel1.Controls.Add(this.comboBox_employee_name);
@@ -239,6 +242,16 @@
             this.comboBox_employee_name.TabIndex = 22;
             this.comboBox_employee_name.ValueMember = "id";
             this.comboBox_employee_name.Visible = false;
+            // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataMember = "employees";
+            this.employeesBindingSource.DataSource = this.eMSDataSet;
+            // 
+            // eMSDataSet
+            // 
+            this.eMSDataSet.DataSetName = "EMSDataSet";
+            this.eMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // numericUpDown_left_time
             // 
@@ -512,6 +525,11 @@
             this.comboBox_department.TabIndex = 2;
             this.comboBox_department.ValueMember = "id";
             // 
+            // departmentsBindingSource
+            // 
+            this.departmentsBindingSource.DataMember = "departments";
+            this.departmentsBindingSource.DataSource = this.eMSDataSet;
+            // 
             // dateTimePicker_join
             // 
             this.dateTimePicker_join.Location = new System.Drawing.Point(13, 341);
@@ -695,6 +713,7 @@
             this.dataGridView_employees.AllowUserToDeleteRows = false;
             this.dataGridView_employees.AllowUserToOrderColumns = true;
             this.dataGridView_employees.AutoGenerateColumns = false;
+            this.dataGridView_employees.BackgroundColor = System.Drawing.Color.Teal;
             this.dataGridView_employees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_employees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -713,162 +732,6 @@
             this.dataGridView_employees.Size = new System.Drawing.Size(786, 413);
             this.dataGridView_employees.TabIndex = 0;
             this.dataGridView_employees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_employees_CellClick);
-            // 
-            // tab_departments
-            // 
-            this.tab_departments.Controls.Add(this.dataGridView_departments);
-            this.tab_departments.Location = new System.Drawing.Point(4, 25);
-            this.tab_departments.Name = "tab_departments";
-            this.tab_departments.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_departments.Size = new System.Drawing.Size(792, 419);
-            this.tab_departments.TabIndex = 1;
-            this.tab_departments.Text = "Departments";
-            this.tab_departments.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView_departments
-            // 
-            this.dataGridView_departments.AllowUserToAddRows = false;
-            this.dataGridView_departments.AllowUserToDeleteRows = false;
-            this.dataGridView_departments.AllowUserToOrderColumns = true;
-            this.dataGridView_departments.AutoGenerateColumns = false;
-            this.dataGridView_departments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_departments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.departmentDataGridViewTextBoxColumn1});
-            this.dataGridView_departments.DataSource = this.departmentsBindingSource;
-            this.dataGridView_departments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_departments.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView_departments.Name = "dataGridView_departments";
-            this.dataGridView_departments.ReadOnly = true;
-            this.dataGridView_departments.Size = new System.Drawing.Size(786, 413);
-            this.dataGridView_departments.TabIndex = 0;
-            this.dataGridView_departments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_departments_CellClick);
-            // 
-            // tab_attendance
-            // 
-            this.tab_attendance.Controls.Add(this.dataGridView_attendance);
-            this.tab_attendance.Controls.Add(this.dataGridView1);
-            this.tab_attendance.Location = new System.Drawing.Point(4, 25);
-            this.tab_attendance.Name = "tab_attendance";
-            this.tab_attendance.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_attendance.Size = new System.Drawing.Size(792, 419);
-            this.tab_attendance.TabIndex = 2;
-            this.tab_attendance.Text = "Attendance";
-            this.tab_attendance.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView_attendance
-            // 
-            this.dataGridView_attendance.AllowUserToAddRows = false;
-            this.dataGridView_attendance.AllowUserToDeleteRows = false;
-            this.dataGridView_attendance.AllowUserToOrderColumns = true;
-            this.dataGridView_attendance.AutoGenerateColumns = false;
-            this.dataGridView_attendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_attendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn2,
-            this.timeenteredDataGridViewTextBoxColumn,
-            this.timeleftDataGridViewTextBoxColumn,
-            this.empnameDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn});
-            this.dataGridView_attendance.DataSource = this.attendencesBindingSource;
-            this.dataGridView_attendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_attendance.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView_attendance.Name = "dataGridView_attendance";
-            this.dataGridView_attendance.ReadOnly = true;
-            this.dataGridView_attendance.Size = new System.Drawing.Size(786, 413);
-            this.dataGridView_attendance.TabIndex = 1;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(786, 413);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // tabPage_salaries
-            // 
-            this.tabPage_salaries.Controls.Add(this.dataGridView_salaries);
-            this.tabPage_salaries.Location = new System.Drawing.Point(4, 25);
-            this.tabPage_salaries.Name = "tabPage_salaries";
-            this.tabPage_salaries.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_salaries.Size = new System.Drawing.Size(792, 419);
-            this.tabPage_salaries.TabIndex = 3;
-            this.tabPage_salaries.Text = "Salaries";
-            this.tabPage_salaries.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView_salaries
-            // 
-            this.dataGridView_salaries.AllowUserToAddRows = false;
-            this.dataGridView_salaries.AllowUserToDeleteRows = false;
-            this.dataGridView_salaries.AllowUserToOrderColumns = true;
-            this.dataGridView_salaries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_salaries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_salaries.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView_salaries.Name = "dataGridView_salaries";
-            this.dataGridView_salaries.ReadOnly = true;
-            this.dataGridView_salaries.Size = new System.Drawing.Size(786, 413);
-            this.dataGridView_salaries.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // eMSDataSet
-            // 
-            this.eMSDataSet.DataSetName = "EMSDataSet";
-            this.eMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "employees";
-            this.employeesBindingSource.DataSource = this.eMSDataSet;
-            // 
-            // employeesTableAdapter
-            // 
-            this.employeesTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -926,6 +789,37 @@
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // tab_departments
+            // 
+            this.tab_departments.Controls.Add(this.dataGridView_departments);
+            this.tab_departments.Location = new System.Drawing.Point(4, 25);
+            this.tab_departments.Name = "tab_departments";
+            this.tab_departments.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_departments.Size = new System.Drawing.Size(792, 419);
+            this.tab_departments.TabIndex = 1;
+            this.tab_departments.Text = "Departments";
+            this.tab_departments.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_departments
+            // 
+            this.dataGridView_departments.AllowUserToAddRows = false;
+            this.dataGridView_departments.AllowUserToDeleteRows = false;
+            this.dataGridView_departments.AllowUserToOrderColumns = true;
+            this.dataGridView_departments.AutoGenerateColumns = false;
+            this.dataGridView_departments.BackgroundColor = System.Drawing.Color.Teal;
+            this.dataGridView_departments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_departments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.departmentDataGridViewTextBoxColumn1});
+            this.dataGridView_departments.DataSource = this.departmentsBindingSource;
+            this.dataGridView_departments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_departments.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_departments.Name = "dataGridView_departments";
+            this.dataGridView_departments.ReadOnly = true;
+            this.dataGridView_departments.Size = new System.Drawing.Size(786, 413);
+            this.dataGridView_departments.TabIndex = 0;
+            this.dataGridView_departments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_departments_CellClick);
+            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
@@ -940,23 +834,38 @@
             this.departmentDataGridViewTextBoxColumn1.Name = "departmentDataGridViewTextBoxColumn1";
             this.departmentDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // departmentsBindingSource
+            // tab_attendance
             // 
-            this.departmentsBindingSource.DataMember = "departments";
-            this.departmentsBindingSource.DataSource = this.eMSDataSet;
+            this.tab_attendance.Controls.Add(this.dataGridView_attendance);
+            this.tab_attendance.Location = new System.Drawing.Point(4, 25);
+            this.tab_attendance.Name = "tab_attendance";
+            this.tab_attendance.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_attendance.Size = new System.Drawing.Size(792, 419);
+            this.tab_attendance.TabIndex = 2;
+            this.tab_attendance.Text = "Attendance";
+            this.tab_attendance.UseVisualStyleBackColor = true;
             // 
-            // departmentsTableAdapter
+            // dataGridView_attendance
             // 
-            this.departmentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // attendencesBindingSource
-            // 
-            this.attendencesBindingSource.DataMember = "attendences";
-            this.attendencesBindingSource.DataSource = this.eMSDataSet;
-            // 
-            // attendencesTableAdapter
-            // 
-            this.attendencesTableAdapter.ClearBeforeFill = true;
+            this.dataGridView_attendance.AllowUserToAddRows = false;
+            this.dataGridView_attendance.AllowUserToDeleteRows = false;
+            this.dataGridView_attendance.AllowUserToOrderColumns = true;
+            this.dataGridView_attendance.AutoGenerateColumns = false;
+            this.dataGridView_attendance.BackgroundColor = System.Drawing.Color.Teal;
+            this.dataGridView_attendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_attendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn2,
+            this.timeenteredDataGridViewTextBoxColumn,
+            this.timeleftDataGridViewTextBoxColumn,
+            this.empnameDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn});
+            this.dataGridView_attendance.DataSource = this.attendencesBindingSource;
+            this.dataGridView_attendance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_attendance.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_attendance.Name = "dataGridView_attendance";
+            this.dataGridView_attendance.ReadOnly = true;
+            this.dataGridView_attendance.Size = new System.Drawing.Size(786, 413);
+            this.dataGridView_attendance.TabIndex = 1;
             // 
             // idDataGridViewTextBoxColumn2
             // 
@@ -993,12 +902,136 @@
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // attendencesBindingSource
+            // 
+            this.attendencesBindingSource.DataMember = "attendences";
+            this.attendencesBindingSource.DataSource = this.eMSDataSet;
+            // 
+            // tabPage_salaries
+            // 
+            this.tabPage_salaries.Controls.Add(this.dataGridView_salaries);
+            this.tabPage_salaries.Location = new System.Drawing.Point(4, 25);
+            this.tabPage_salaries.Name = "tabPage_salaries";
+            this.tabPage_salaries.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_salaries.Size = new System.Drawing.Size(792, 419);
+            this.tabPage_salaries.TabIndex = 3;
+            this.tabPage_salaries.Text = "Salaries";
+            this.tabPage_salaries.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_salaries
+            // 
+            this.dataGridView_salaries.AllowUserToAddRows = false;
+            this.dataGridView_salaries.AllowUserToDeleteRows = false;
+            this.dataGridView_salaries.AllowUserToOrderColumns = true;
+            this.dataGridView_salaries.BackgroundColor = System.Drawing.Color.Teal;
+            this.dataGridView_salaries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_salaries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_salaries.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_salaries.Name = "dataGridView_salaries";
+            this.dataGridView_salaries.ReadOnly = true;
+            this.dataGridView_salaries.Size = new System.Drawing.Size(786, 413);
+            this.dataGridView_salaries.TabIndex = 0;
+            this.dataGridView_salaries.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_salaries_CellClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.optionsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
+            // departmentsTableAdapter
+            // 
+            this.departmentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // attendencesTableAdapter
+            // 
+            this.attendencesTableAdapter.ClearBeforeFill = true;
+            // 
+            // label_footer
+            // 
+            this.label_footer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_footer.AutoSize = true;
+            this.label_footer.BackColor = System.Drawing.Color.Snow;
+            this.label_footer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_footer.ForeColor = System.Drawing.Color.Teal;
+            this.label_footer.Location = new System.Drawing.Point(276, 504);
+            this.label_footer.Name = "label_footer";
+            this.label_footer.Size = new System.Drawing.Size(476, 15);
+            this.label_footer.TabIndex = 12;
+            this.label_footer.Text = "Windows Form (.NET Framework), Team: Abbass Alayan / Hussien Haidar";
+            // 
+            // txt_total_salary
+            // 
+            this.txt_total_salary.BackColor = System.Drawing.SystemColors.Menu;
+            this.txt_total_salary.Location = new System.Drawing.Point(12, 178);
+            this.txt_total_salary.Multiline = true;
+            this.txt_total_salary.Name = "txt_total_salary";
+            this.txt_total_salary.Size = new System.Drawing.Size(226, 28);
+            this.txt_total_salary.TabIndex = 24;
+            this.txt_total_salary.Visible = false;
+            // 
+            // label_total_salary
+            // 
+            this.label_total_salary.AutoSize = true;
+            this.label_total_salary.BackColor = System.Drawing.Color.Teal;
+            this.label_total_salary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label_total_salary.ForeColor = System.Drawing.Color.Transparent;
+            this.label_total_salary.Location = new System.Drawing.Point(16, 159);
+            this.label_total_salary.Name = "label_total_salary";
+            this.label_total_salary.Size = new System.Drawing.Size(92, 16);
+            this.label_total_salary.TabIndex = 25;
+            this.label_total_salary.Text = "Total Salary\r\n";
+            this.label_total_salary.Visible = false;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.label_footer);
             this.Controls.Add(this.tabControl_management);
             this.Controls.Add(this.label_title);
             this.Controls.Add(this.panel1);
@@ -1012,10 +1045,13 @@
             this.panel1.PerformLayout();
             this.groupBox_left_time.ResumeLayout(false);
             this.groupBox_left_time.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_left_time)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_entered_time)).EndInit();
             this.groupBox_entered_time.ResumeLayout(false);
             this.groupBox_entered_time.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numupdwn_salary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl_management.ResumeLayout(false);
@@ -1025,15 +1061,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_departments)).EndInit();
             this.tab_attendance.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_attendance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource)).EndInit();
             this.tabPage_salaries.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_salaries)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eMSDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attendencesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1072,7 +1104,6 @@
         private System.Windows.Forms.ComboBox comboBox_gender;
         private System.Windows.Forms.Label label_gender;
         private System.Windows.Forms.DataGridView dataGridView_departments;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txt_department;
         private System.Windows.Forms.Label label_department;
         private System.Windows.Forms.Button btn_delete_dapartment;
@@ -1118,5 +1149,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn timeleftDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn empnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label_footer;
+        private System.Windows.Forms.Label label_total_salary;
+        private System.Windows.Forms.TextBox txt_total_salary;
     }
 }
