@@ -24,7 +24,7 @@ namespace EMS
 
         private void Btn_login_Click(object sender, EventArgs e)
         {
-            if (txt_username.Text.Equals("a") && txt_password.Text.Equals("a"))
+            if (txt_username.Text.Equals("admin") && txt_password.Text.Equals("admin"))
             {
                 // Create an instance of the Employees form
                 Employee employeesForm = new Employee();
