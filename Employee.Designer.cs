@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_total_salary = new System.Windows.Forms.Label();
+            this.txt_total_salary = new System.Windows.Forms.TextBox();
             this.btn_add_attendance = new System.Windows.Forms.Button();
             this.groupBox_left_time = new System.Windows.Forms.GroupBox();
             this.radioButton_left_am = new System.Windows.Forms.RadioButton();
@@ -106,8 +108,7 @@
             this.departmentsTableAdapter = new EMS.EMSDataSetTableAdapters.departmentsTableAdapter();
             this.attendencesTableAdapter = new EMS.EMSDataSetTableAdapters.attendencesTableAdapter();
             this.label_footer = new System.Windows.Forms.Label();
-            this.txt_total_salary = new System.Windows.Forms.TextBox();
-            this.label_total_salary = new System.Windows.Forms.Label();
+            this.btn_give_salary = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox_left_time.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
@@ -134,6 +135,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.btn_give_salary);
             this.panel1.Controls.Add(this.label_total_salary);
             this.panel1.Controls.Add(this.txt_total_salary);
             this.panel1.Controls.Add(this.btn_add_attendance);
@@ -175,6 +177,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 637);
             this.panel1.TabIndex = 1;
+            // 
+            // label_total_salary
+            // 
+            this.label_total_salary.AutoSize = true;
+            this.label_total_salary.BackColor = System.Drawing.Color.Teal;
+            this.label_total_salary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label_total_salary.ForeColor = System.Drawing.Color.Transparent;
+            this.label_total_salary.Location = new System.Drawing.Point(16, 159);
+            this.label_total_salary.Name = "label_total_salary";
+            this.label_total_salary.Size = new System.Drawing.Size(92, 16);
+            this.label_total_salary.TabIndex = 25;
+            this.label_total_salary.Text = "Total Salary\r\n";
+            this.label_total_salary.Visible = false;
+            // 
+            // txt_total_salary
+            // 
+            this.txt_total_salary.BackColor = System.Drawing.SystemColors.Menu;
+            this.txt_total_salary.Location = new System.Drawing.Point(12, 178);
+            this.txt_total_salary.Multiline = true;
+            this.txt_total_salary.Name = "txt_total_salary";
+            this.txt_total_salary.Size = new System.Drawing.Size(226, 28);
+            this.txt_total_salary.TabIndex = 24;
+            this.txt_total_salary.Visible = false;
             // 
             // btn_add_attendance
             // 
@@ -998,32 +1023,27 @@
             this.label_footer.ForeColor = System.Drawing.Color.Teal;
             this.label_footer.Location = new System.Drawing.Point(276, 504);
             this.label_footer.Name = "label_footer";
-            this.label_footer.Size = new System.Drawing.Size(476, 15);
+            this.label_footer.Size = new System.Drawing.Size(482, 15);
             this.label_footer.TabIndex = 12;
-            this.label_footer.Text = "Windows Form (.NET Framework), Team: Abbass Alayan / Hussien Haidar";
+            this.label_footer.Text = "Windows Form (.NET Framework), Team: Abbass Alayyan / Hussien Haidar";
             // 
-            // txt_total_salary
+            // btn_give_salary
             // 
-            this.txt_total_salary.BackColor = System.Drawing.SystemColors.Menu;
-            this.txt_total_salary.Location = new System.Drawing.Point(12, 178);
-            this.txt_total_salary.Multiline = true;
-            this.txt_total_salary.Name = "txt_total_salary";
-            this.txt_total_salary.Size = new System.Drawing.Size(226, 28);
-            this.txt_total_salary.TabIndex = 24;
-            this.txt_total_salary.Visible = false;
-            // 
-            // label_total_salary
-            // 
-            this.label_total_salary.AutoSize = true;
-            this.label_total_salary.BackColor = System.Drawing.Color.Teal;
-            this.label_total_salary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label_total_salary.ForeColor = System.Drawing.Color.Transparent;
-            this.label_total_salary.Location = new System.Drawing.Point(16, 159);
-            this.label_total_salary.Name = "label_total_salary";
-            this.label_total_salary.Size = new System.Drawing.Size(92, 16);
-            this.label_total_salary.TabIndex = 25;
-            this.label_total_salary.Text = "Total Salary\r\n";
-            this.label_total_salary.Visible = false;
+            this.btn_give_salary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_give_salary.BackColor = System.Drawing.Color.Teal;
+            this.btn_give_salary.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btn_give_salary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Teal;
+            this.btn_give_salary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Teal;
+            this.btn_give_salary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_give_salary.ForeColor = System.Drawing.Color.Snow;
+            this.btn_give_salary.Location = new System.Drawing.Point(8, 540);
+            this.btn_give_salary.Name = "btn_give_salary";
+            this.btn_give_salary.Size = new System.Drawing.Size(226, 35);
+            this.btn_give_salary.TabIndex = 26;
+            this.btn_give_salary.Text = "GIVE SALARY";
+            this.btn_give_salary.UseVisualStyleBackColor = false;
+            this.btn_give_salary.Visible = false;
+            this.btn_give_salary.Click += new System.EventHandler(this.btn_give_salary_Click);
             // 
             // Employee
             // 
@@ -1152,5 +1172,6 @@
         private System.Windows.Forms.Label label_footer;
         private System.Windows.Forms.Label label_total_salary;
         private System.Windows.Forms.TextBox txt_total_salary;
+        private System.Windows.Forms.Button btn_give_salary;
     }
 }

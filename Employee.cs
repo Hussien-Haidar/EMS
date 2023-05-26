@@ -151,34 +151,45 @@ namespace EMS
         //delete employee button
         private void btn_delete_emp_Click(object sender, EventArgs e)
         {
-            if (!txt_emp_name.Text.Equals("") && !txt_phone.Text.Equals("") && !comboBox_department.Text.Equals("") && !numupdwn_salary.Value.Equals(0)
-                && !comboBox_gender.Text.Equals(""))
+            if (!txt_emp_name.Text.Equals("") && !txt_phone.Text.Equals("") && !comboBox_department.Text.Equals("") && !numupdwn_salary.Value.Equals(0) && !comboBox_gender.Text.Equals(""))
             {
-                con.Close();
-                con.Open();
-                SqlCommand cmd = new SqlCommand("Delete [employees] where id = "+txt_id.Text, con);
-                int i = cmd.ExecuteNonQuery();
-
-                if (i != 0)
+                try
                 {
-                    MessageBox.Show("Employee has been permenantly deleted");
-                    txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
-                    RefreshData();
-                }
-                else
-                {
-                    MessageBox.Show("error");
-                }
+                    con.Close();
+                    con.Open();
 
-                con.Close();
-                con.Open();
-                SqlCommand cmd2 = new SqlCommand("Delete [attendences] where emp_name = '" + txt_emp_name.Text + "'", con);
-                int i2 = cmd.ExecuteNonQuery();
-                txt_emp_name.Text = "";
+                    SqlCommand deleteAttendanceCmd = new SqlCommand("DELETE FROM [attendences] WHERE emp_id = @empId", con);
+                    deleteAttendanceCmd.Parameters.AddWithValue("@empId", txt_id.Text);
+                    deleteAttendanceCmd.ExecuteNonQuery();
+
+                    SqlCommand deleteEmployeeCmd = new SqlCommand("DELETE FROM [employees] WHERE id = @empId", con);
+                    deleteEmployeeCmd.Parameters.AddWithValue("@empId", txt_id.Text);
+                    int affectedRows = deleteEmployeeCmd.ExecuteNonQuery();
+
+                    if (affectedRows > 0)
+                    {
+                        MessageBox.Show("Employee has been permanently deleted");
+                        txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
+                        RefreshData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error deleting the employee");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that may occur
+                    MessageBox.Show("Error deleting the employee: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
             else
             {
-                MessageBox.Show("Please Select a row");
+                MessageBox.Show("Please select a row");
             }
         }
 
@@ -361,6 +372,33 @@ namespace EMS
             }
         }
 
+        //give salary button
+        private void btn_give_salary_Click(object sender, EventArgs e)
+        {
+            if (!txt_emp_name.Text.Equals(""))
+            {
+                con.Close();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Delete [attendences] where emp_name = '" + txt_emp_name.Text + "'", con);
+                int i = cmd.ExecuteNonQuery();
+
+                if (i != 0)
+                {
+                    MessageBox.Show("The employee attendences has been reset after the administration give him his salary");
+                    txt_total_salary.Text = "0 $";
+                    RefreshData();
+                }
+                else
+                {
+                    MessageBox.Show("error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a row");
+            }
+        }
+
         //check if the user has changed the selected tab
         private void tabControl_management_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -411,6 +449,7 @@ namespace EMS
                 btn_add_department.Visible = false;
                 btn_delete_dapartment.Visible = false;
                 btn_update_department.Visible = false;
+                btn_give_salary.Visible = false;
 
                 btn_add_attendance.Visible = false;
             }
@@ -452,6 +491,7 @@ namespace EMS
                 btn_add_emp.Visible = false;
                 btn_delete_emp.Visible = false;
                 btn_update_emp.Visible = false;
+                btn_give_salary.Visible = false;
 
                 btn_add_attendance.Visible = false;
 
@@ -500,13 +540,14 @@ namespace EMS
                 btn_add_emp.Visible = false;
                 btn_delete_emp.Visible = false;
                 btn_update_emp.Visible = false;
+                btn_give_salary.Visible = false;
 
                 btn_add_department.Visible = false;
                 btn_delete_dapartment.Visible = false;
                 btn_update_department.Visible = false;
             }
 
-            //if the user chooses attendence tab
+            //if the user chooses salaries tab
             else if (tabControl_management.SelectedTab == tabPage_salaries)
             {
                 label_title.Text = "View Salaries";
@@ -517,6 +558,7 @@ namespace EMS
                 txt_emp_name.ReadOnly = true;
                 txt_emp_name.BackColor = Color.LightGray;
                 txt_emp_name.Text = "";
+                btn_give_salary.Visible = true;
 
                 label_current_date.Visible = false;
                 label_entered_time.Visible = false;
@@ -669,6 +711,20 @@ namespace EMS
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
             this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
             this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
+
+            con.Close();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT id, name FROM [employees]", con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            // Assign the DataTable as the data source for the DataGridView
+            dataGridView_salaries.DataSource = dataTable;
+
+            dataGridView_salaries.Columns["id"].HeaderText = "ID";
+            dataGridView_salaries.Columns["name"].HeaderText = "Employees";
+            con.Close();
         }
     }
 }
