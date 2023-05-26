@@ -89,6 +89,8 @@
             this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_departments = new System.Windows.Forms.TabPage();
             this.dataGridView_departments = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_attendance = new System.Windows.Forms.TabPage();
             this.dataGridView_attendance = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,8 +112,6 @@
             this.departmentsTableAdapter = new EMS.EMSDataSetTableAdapters.departmentsTableAdapter();
             this.attendancesTableAdapter = new EMS.EMSDataSetTableAdapters.attendancesTableAdapter();
             this.txt_id_dep = new System.Windows.Forms.TextBox();
-            this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox_left_time.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
@@ -739,7 +739,7 @@
             this.tabControl_management.Location = new System.Drawing.Point(269, 57);
             this.tabControl_management.Name = "tabControl_management";
             this.tabControl_management.SelectedIndex = 0;
-            this.tabControl_management.Size = new System.Drawing.Size(957, 448);
+            this.tabControl_management.Size = new System.Drawing.Size(954, 448);
             this.tabControl_management.TabIndex = 10;
             this.tabControl_management.SelectedIndexChanged += new System.EventHandler(this.TabControl_management_SelectedIndexChanged);
             // 
@@ -749,7 +749,7 @@
             this.tab_employees.Location = new System.Drawing.Point(4, 25);
             this.tab_employees.Name = "tab_employees";
             this.tab_employees.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_employees.Size = new System.Drawing.Size(949, 419);
+            this.tab_employees.Size = new System.Drawing.Size(946, 419);
             this.tab_employees.TabIndex = 0;
             this.tab_employees.Text = "Employees";
             this.tab_employees.UseVisualStyleBackColor = true;
@@ -777,7 +777,7 @@
             this.dataGridView_employees.Location = new System.Drawing.Point(3, 3);
             this.dataGridView_employees.Name = "dataGridView_employees";
             this.dataGridView_employees.ReadOnly = true;
-            this.dataGridView_employees.Size = new System.Drawing.Size(943, 413);
+            this.dataGridView_employees.Size = new System.Drawing.Size(940, 413);
             this.dataGridView_employees.TabIndex = 0;
             this.dataGridView_employees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_employees_CellClick);
             // 
@@ -874,6 +874,20 @@
             this.dataGridView_departments.Size = new System.Drawing.Size(943, 413);
             this.dataGridView_departments.TabIndex = 0;
             this.dataGridView_departments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_departments_CellClick);
+            // 
+            // iDDataGridViewTextBoxColumn1
+            // 
+            this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
+            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // departmentDataGridViewTextBoxColumn
+            // 
+            this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
+            this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
+            this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
+            this.departmentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tab_attendance
             // 
@@ -989,7 +1003,7 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1241, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1238, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1059,26 +1073,12 @@
             this.txt_id_dep.TabIndex = 27;
             this.txt_id_dep.Visible = false;
             // 
-            // iDDataGridViewTextBoxColumn1
-            // 
-            this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
-            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // departmentDataGridViewTextBoxColumn
-            // 
-            this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
-            this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
-            this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
-            this.departmentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(1241, 661);
+            this.ClientSize = new System.Drawing.Size(1238, 661);
             this.Controls.Add(this.txt_id_dep);
             this.Controls.Add(this.label_footer);
             this.Controls.Add(this.tabControl_management);
