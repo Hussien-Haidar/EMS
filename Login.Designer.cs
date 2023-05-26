@@ -127,6 +127,7 @@
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(252, 28);
             this.txt_username.TabIndex = 1;
+            this.txt_username.UseSystemPasswordChar = true;
             // 
             // txt_password
             // 
@@ -136,6 +137,7 @@
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(252, 28);
             this.txt_password.TabIndex = 2;
+            this.txt_password.UseSystemPasswordChar = true;
             // 
             // btn_login
             // 
