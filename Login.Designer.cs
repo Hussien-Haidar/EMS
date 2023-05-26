@@ -151,7 +151,7 @@
             this.btn_login.TabIndex = 3;
             this.btn_login.Text = "LOGIN";
             this.btn_login.UseVisualStyleBackColor = false;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.btn_login.Click += new System.EventHandler(this.Btn_login_Click);
             // 
             // label_reset
             // 
@@ -163,7 +163,7 @@
             this.label_reset.Size = new System.Drawing.Size(48, 16);
             this.label_reset.TabIndex = 4;
             this.label_reset.Text = "Reset";
-            this.label_reset.Click += new System.EventHandler(this.label_reset_Click);
+            this.label_reset.Click += new System.EventHandler(this.Label_reset_Click);
             // 
             // Login
             // 

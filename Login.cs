@@ -17,12 +17,12 @@ namespace EMS
             InitializeComponent();
         }
 
-        private void label_reset_Click(object sender, EventArgs e)
+        private void Label_reset_Click(object sender, EventArgs e)
         {
             txt_username.Text = txt_password.Text = "";
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        private void Btn_login_Click(object sender, EventArgs e)
         {
             if (txt_username.Text.Equals("a") && txt_password.Text.Equals("a"))
             {

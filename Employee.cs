@@ -19,49 +19,23 @@ namespace EMS
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-VTCIHHL\SQLEXPRESS;Initial Catalog=EMS;Integrated Security=True;");
+        readonly SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-VTCIHHL\SQLEXPRESS;Initial Catalog=EMS;Integrated Security=True;");
 
         //load employees form
         private void Employee_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'eMSDataSet.attendences' table. You can move, or remove it, as needed.
-            this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
-            // TODO: This line of code loads data into the 'eMSDataSet.departments' table. You can move, or remove it, as needed.
-            this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
             // TODO: This line of code loads data into the 'eMSDataSet.employees' table. You can move, or remove it, as needed.
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
-            // TODO: This line of code loads data into the 'eMSDataSet.employees' table. You can move, or remove it, as needed.
-            this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
-
-            // Set the column header text for each column
-            dataGridView_employees.Columns[0].HeaderText = "ID";
-            dataGridView_employees.Columns[1].HeaderText = "Name";
-            dataGridView_employees.Columns[2].HeaderText = "Gender";
-            dataGridView_employees.Columns[3].HeaderText = "Department";
-            dataGridView_employees.Columns[4].HeaderText = "Birth Date";
-            dataGridView_employees.Columns[5].HeaderText = "Join Date";
-            dataGridView_employees.Columns[6].HeaderText = "Salary";
-            dataGridView_employees.Columns[7].HeaderText = "Phone";
 
             // TODO: This line of code loads data into the 'eMSDataSet.departments' table. You can move, or remove it, as needed.
             this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
 
-            // Set the column header text for each column
-            dataGridView_departments.Columns[0].HeaderText = "ID";
-            dataGridView_departments.Columns[1].HeaderText = "Department";
-
             // TODO: This line of code loads data into the 'eMSDataSet.attendences' table. You can move, or remove it, as needed.
-            this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
+            this.attendancesTableAdapter.Fill(this.eMSDataSet.attendances);
 
-            // Set the column header text for each column
-            dataGridView_attendance.Columns[0].HeaderText = "ID";
-            dataGridView_attendance.Columns[1].HeaderText = "Time Entered";
-            dataGridView_attendance.Columns[2].HeaderText = "Time Left";
-            dataGridView_attendance.Columns[3].HeaderText = "Employee Name";
-            dataGridView_attendance.Columns[4].HeaderText = "Date";
-
+            //This code fill the data grid view of salaries using sql command
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT id, name FROM [employees]", con);
+            SqlCommand cmd = new SqlCommand("SELECT id, emp_name, salary FROM [employees]", con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -70,44 +44,19 @@ namespace EMS
             dataGridView_salaries.DataSource = dataTable;
 
             dataGridView_salaries.Columns["id"].HeaderText = "ID";
-            dataGridView_salaries.Columns["name"].HeaderText = "Employees";
+            dataGridView_salaries.Columns["emp_name"].HeaderText = "Employees";
+            dataGridView_salaries.Columns["salary"].HeaderText = "Daily Salary";
             con.Close();
-
-            //con.Open();
-            //// Query the database to retrieve the join_date column for the desired employee(s)
-            //string query = "SELECT join_date, birth FROM [employees]";
-            //SqlCommand command = new SqlCommand(query, con);
-            //SqlDataReader reader = command.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    string joinDateText = reader["join_date"].ToString();
-            //    string birthDateText = reader["birth"].ToString();
-
-            //    // Parse the join_date text to extract the month name
-            //    DateTime joinDate = DateTime.Parse(joinDateText);
-            //    DateTime birthDate = DateTime.Parse(birthDateText);
-
-            //    string joinMonthName = joinDate.ToString("MMMM");
-            //    string birthMonthName = birthDate.ToString("MMM");
-
-            //    // Use the monthName variable as desired (e.g., store it, display it, etc.)
-            //    Console.WriteLine("Month Name: " + joinMonthName + ", "+ birthMonthName);
-            //}
-
-            //reader.Close();
-
-
         }
 
         //exit system when pressing exit tool strip menu button
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         //logout from the  system when pressing logout tool strip menu button
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Create an instance of the Login form
             Login loginForm = new Login();
@@ -119,15 +68,15 @@ namespace EMS
         }
 
         //add employee button
-        private void btn_add_emp_Click(object sender, EventArgs e)
+        private void Btn_add_emp_Click(object sender, EventArgs e)
         {
             if (!txt_emp_name.Text.Equals("") && !txt_phone.Text.Equals("") && !comboBox_department.Text.Equals("") && !numupdwn_salary.Value.Equals(0)
                 && !comboBox_gender.Text.Equals(""))
             {
                 con.Close();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Insert Into [employees] (name, gender, department, birth, join_date, salary, phone) " +
-                    "values ('" + txt_emp_name.Text + "', '" + comboBox_gender.Text + "', '" + comboBox_department.Text + "', '" +
+                SqlCommand cmd = new SqlCommand("Insert Into [employees] (emp_name, gender, dep_id, birth_date, join_date, salary, phone) " +
+                    "values ('" + txt_emp_name.Text + "', '" + comboBox_gender.Text + "', '" + txt_id_dep.Text + "', '" +
                     dateTimePicker_birth.Text + "', '" + dateTimePicker_join.Text + "', '"+numupdwn_salary.Value+"', '" + txt_phone.Text + "')", con);
                 int i = cmd.ExecuteNonQuery();
 
@@ -149,7 +98,7 @@ namespace EMS
         }
 
         //delete employee button
-        private void btn_delete_emp_Click(object sender, EventArgs e)
+        private void Btn_delete_emp_Click(object sender, EventArgs e)
         {
             if (!txt_emp_name.Text.Equals("") && !txt_phone.Text.Equals("") && !comboBox_department.Text.Equals("") && !numupdwn_salary.Value.Equals(0) && !comboBox_gender.Text.Equals(""))
             {
@@ -158,10 +107,6 @@ namespace EMS
                     con.Close();
                     con.Open();
 
-                    SqlCommand deleteAttendanceCmd = new SqlCommand("DELETE FROM [attendences] WHERE emp_id = @empId", con);
-                    deleteAttendanceCmd.Parameters.AddWithValue("@empId", txt_id.Text);
-                    deleteAttendanceCmd.ExecuteNonQuery();
-
                     SqlCommand deleteEmployeeCmd = new SqlCommand("DELETE FROM [employees] WHERE id = @empId", con);
                     deleteEmployeeCmd.Parameters.AddWithValue("@empId", txt_id.Text);
                     int affectedRows = deleteEmployeeCmd.ExecuteNonQuery();
@@ -169,7 +114,7 @@ namespace EMS
                     if (affectedRows > 0)
                     {
                         MessageBox.Show("Employee has been permanently deleted");
-                        txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
+                        txt_emp_name.Text = txt_phone.Text = comboBox_gender.Text = comboBox_department.Text = "";
                         RefreshData();
                     }
                     else
@@ -194,15 +139,15 @@ namespace EMS
         }
 
         //update employee button
-        private void btn_update_emp_Click(object sender, EventArgs e)
+        private void Btn_update_emp_Click(object sender, EventArgs e)
         {
             if (!txt_emp_name.Text.Equals("") && !txt_phone.Text.Equals("") && !comboBox_department.Text.Equals("") && !numupdwn_salary.Value.Equals(0)
                 && !comboBox_gender.Text.Equals(""))
             {
                 con.Close();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Update [employees] set name='"+txt_emp_name.Text+"', gender='"+comboBox_gender.Text+"', " +
-                    "department='"+comboBox_department.Text+"', birth='"+dateTimePicker_birth.Text+"', join_date='"+dateTimePicker_join.Text+"', " +
+                SqlCommand cmd = new SqlCommand("Update [employees] set emp_name='"+txt_emp_name.Text+"', gender='"+comboBox_gender.Text+"', " +
+                    "dep_id= '" + txt_id_dep.Text + "', birth_date='"+dateTimePicker_birth.Text+"', join_date='"+dateTimePicker_join.Text+"', " +
                     "salary='"+numupdwn_salary.Value+"', phone='"+txt_phone.Text+"'  where id = " + txt_id.Text, con);
                 int i = cmd.ExecuteNonQuery();
 
@@ -224,7 +169,7 @@ namespace EMS
         }
 
         //add department button
-        private void btn_add_department_Click(object sender, EventArgs e)
+        private void Btn_add_department_Click(object sender, EventArgs e)
         {
             if (txt_department.Text == "")
             {
@@ -252,7 +197,7 @@ namespace EMS
         }
 
         //delete department button
-        private void btn_delete_dapartment_Click(object sender, EventArgs e)
+        private void Btn_delete_dapartment_Click(object sender, EventArgs e)
         {
             if (!txt_department.Text.Equals(""))
             {
@@ -279,7 +224,7 @@ namespace EMS
         }
 
         //update department button
-        private void btn_update_department_Click(object sender, EventArgs e)
+        private void Btn_update_department_Click(object sender, EventArgs e)
         {
             if (!txt_department.Text.Equals(""))
             {
@@ -306,7 +251,7 @@ namespace EMS
         }
 
         //add attendance button
-        private void btn_add_attendance_Click(object sender, EventArgs e)
+        private void Btn_add_attendance_Click(object sender, EventArgs e)
         {
             string enteredTimeSelection = GetSelectedRadioButtonText(groupBox_entered_time);
             string leftTimeSelection = GetSelectedRadioButtonText(groupBox_left_time);
@@ -331,18 +276,17 @@ namespace EMS
             // Check if radio buttons are selected in both group boxes
             if (!string.IsNullOrEmpty(enteredTimeSelection) && !string.IsNullOrEmpty(leftTimeSelection))
             {
-                // Your existing code for database insertion
                 if (!comboBox_employee_name.Text.Equals("") && !numericUpDown_entered_time.Value.Equals(0) && !numericUpDown_left_time.Value.Equals(0))
                 {
                     con.Close();
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO [attendences] (time_entered, time_left, emp_name, date) " +
-                        "VALUES (@timeEntered, @timeLeft, @empName, @date)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [attendances] (time_entered, time_left, emp_id, date) " +
+                        "VALUES (@timeEntered, @timeLeft, @empId, @date)", con);
 
                     // Set parameter values
                     cmd.Parameters.AddWithValue("@timeEntered", numericUpDown_entered_time.Value + " " + enteredTimeSelection);
                     cmd.Parameters.AddWithValue("@timeLeft", numericUpDown_left_time.Value + " " + leftTimeSelection);
-                    cmd.Parameters.AddWithValue("@empName", comboBox_employee_name.Text); // Assuming you have a specific employee ID
+                    cmd.Parameters.AddWithValue("@empId", txt_id.Text);
                     cmd.Parameters.AddWithValue("@date", dateTimePicker_current_date.Text);
 
                     int i = cmd.ExecuteNonQuery();
@@ -373,13 +317,13 @@ namespace EMS
         }
 
         //give salary button
-        private void btn_give_salary_Click(object sender, EventArgs e)
+        private void Btn_give_salary_Click(object sender, EventArgs e)
         {
-            if (!txt_emp_name.Text.Equals(""))
+            if (!txt_emp_name.Text.Equals("") && !txt_id.Text.Equals(""))
             {
                 con.Close();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Delete [attendences] where emp_name = '" + txt_emp_name.Text + "'", con);
+                SqlCommand cmd = new SqlCommand("Delete [attendances] where emp_id = '" + txt_id.Text + "'", con);
                 int i = cmd.ExecuteNonQuery();
 
                 if (i != 0)
@@ -400,7 +344,7 @@ namespace EMS
         }
 
         //check if the user has changed the selected tab
-        private void tabControl_management_SelectedIndexChanged(object sender, EventArgs e)
+        private void TabControl_management_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if the user chooses employees tab
             if (tabControl_management.SelectedTab == tab_employees) 
@@ -600,7 +544,7 @@ namespace EMS
         }
 
         //get the data of the selected row from the data grid view of the employees
-        private void dataGridView_employees_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView_employees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -611,16 +555,22 @@ namespace EMS
                     string id = selectedRow.Cells[0].Value.ToString();
                     string name = selectedRow.Cells[1].Value.ToString();
                     string gender = selectedRow.Cells[2].Value.ToString();
-                    string department = selectedRow.Cells[3].Value.ToString();
-                    int salary = int.Parse(selectedRow.Cells[6].Value.ToString());
-                    string phone = selectedRow.Cells[7].Value.ToString();
+                    string depId = selectedRow.Cells[3].Value.ToString();
+                    string department = selectedRow.Cells[4].Value.ToString();
+                    string birth = selectedRow.Cells[5].Value.ToString();
+                    string join = selectedRow.Cells[6].Value.ToString();
+                    int salary = int.Parse(selectedRow.Cells[7].Value.ToString());
+                    string phone = selectedRow.Cells[8].Value.ToString();
 
                     txt_id.Text = id;
+                    txt_id_dep.Text = depId;
                     txt_emp_name.Text = name;
                     comboBox_gender.Text = gender;
                     comboBox_department.Text = department;
                     numupdwn_salary.Value = salary;
                     txt_phone.Text = phone;
+                    dateTimePicker_birth.Text = birth;
+                    dateTimePicker_join.Text = join;
                 }
                 catch (Exception ex)
                 {
@@ -631,7 +581,7 @@ namespace EMS
         }
 
         //get the data of the selected row from the data grid view of the departments
-        private void dataGridView_departments_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView_departments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -654,7 +604,7 @@ namespace EMS
         }
 
         //get the data of the selected row from the data grid view of the salaries
-        private void dataGridView_salaries_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView_salaries_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -664,6 +614,7 @@ namespace EMS
                 {
                     string id = selectedRow.Cells[0].Value.ToString();
                     string name = selectedRow.Cells[1].Value.ToString();
+                    string salary = selectedRow.Cells[2].Value.ToString();
                     int count = 0;
                     int dailySalary = 0;
 
@@ -674,7 +625,7 @@ namespace EMS
                     con.Open();
 
                     string query = "SELECT salary FROM [employees] where id = '" + txt_id.Text + "'";
-                    string query2 = "SELECT id FROM [attendences] where emp_name = '" + txt_emp_name.Text + "'";
+                    string query2 = "SELECT id FROM [attendances] where emp_id = '" + txt_id.Text + "'";
 
                     SqlCommand command = new SqlCommand(query, con);
                     SqlDataReader reader = command.ExecuteReader();
@@ -705,16 +656,72 @@ namespace EMS
             }
         }
 
+        //get the id of the department when changing its value
+        private void ComboBox_department_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_department.SelectedValue != null)
+            {
+                int departmentId = (int)comboBox_department.SelectedValue;
+
+                con.Close();
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT id FROM [departments] WHERE id = @id", con);
+                cmd.Parameters.AddWithValue("@id", departmentId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    txt_id_dep.Text = reader["id"].ToString();
+                }
+                else
+                {
+                    txt_id_dep.Text = string.Empty; // or set it to a default value if no record is found
+                }
+
+                reader.Close();
+                con.Close();
+            }
+        }
+
+        //get the id of the employee when changing its value
+        private void ComboBox_employee_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_employee_name.SelectedValue != null)
+            {
+                int employeeId = (int)comboBox_employee_name.SelectedValue;
+
+                con.Close();
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT id FROM [employees] WHERE id = @id", con);
+                cmd.Parameters.AddWithValue("@id", employeeId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    txt_id.Text = reader["id"].ToString();
+                }
+                else
+                {
+                    txt_id.Text = string.Empty; // or set it to a default value if no record is found
+                }
+
+                reader.Close();
+                con.Close();
+            }
+        }
+
         //refresh the data of the data grids
-        private void RefreshData() 
+        private void RefreshData()
         {
             this.employeesTableAdapter.Fill(this.eMSDataSet.employees);
             this.departmentsTableAdapter.Fill(this.eMSDataSet.departments);
-            this.attendencesTableAdapter.Fill(this.eMSDataSet.attendences);
+            this.attendancesTableAdapter.Fill(this.eMSDataSet.attendances);
 
             con.Close();
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT id, name FROM [employees]", con);
+            SqlCommand cmd = new SqlCommand("SELECT id, emp_name, salary FROM [employees]", con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -723,7 +730,8 @@ namespace EMS
             dataGridView_salaries.DataSource = dataTable;
 
             dataGridView_salaries.Columns["id"].HeaderText = "ID";
-            dataGridView_salaries.Columns["name"].HeaderText = "Employees";
+            dataGridView_salaries.Columns["emp_name"].HeaderText = "Employees";
+            dataGridView_salaries.Columns["salary"].HeaderText = "Daily Salary";
             con.Close();
         }
     }
